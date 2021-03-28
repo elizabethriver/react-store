@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer, useMemo } from "react";
+import React, { useEffect, useState, useReducer, useMemo, useRef } from "react";
 
 //TODO favoritos
 const initialState = {
@@ -21,27 +21,35 @@ const favoriteReducer = (state, action) => {
 const Caracter = () => {
   const [caracter, setCaracter] = useState([]);
   const [favorites, dispatch] = useReducer(favoriteReducer, initialState);
-  const [search, setSearch] = useState('');
-  
-//TODO buscar nombre
-  const handlerSearch = (e) => {
-    // console.log('input')
-    console.log(e.target.value)
-    setSearch(e.target.value);
+  const [search, setSearch] = useState("");
+  const searchInput = useRef(null);
 
+  //TODO buscar nombre
+  const handlerSearch = () => {
+    // console.log('input')
+    // console.log(e.target.value);
+    // setSearch(e.target.value);
+    setSearch(searchInput.current.value);
+    // console.log(searchInput);
   };
-//TODO a;adir favoritos
+  //TODO a;adir favoritos
   const handleClick = (favorite) => {
     dispatch({ type: "ADD_TO_FAVORITE", payload: favorite });
   };
 
   //TODO filtrar
 
-  const filterUsers = caracter.filter((user) => {
-      return user.name.toLowerCase().includes(search.toLowerCase())
-    })
-  console.log(filterUsers)
-
+  // const filterUsers = caracter.filter((user) => {
+  //     return user.name.toLowerCase().includes(search.toLowerCase())
+  //   })
+  // console.log(filterUsers)
+  const filterUsers = useMemo(
+    () =>
+      caracter.filter((user) => {
+        return user.name.toLowerCase().includes(search.toLowerCase());
+      }),
+    [caracter, search]
+  );
   //Conectar con API
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -53,8 +61,6 @@ const Caracter = () => {
       .catch((error) => console.log(error));
   }, []);
 
-
-
   return (
     <div className="Characters">
       {favorites.favorites.map((favorite) => (
@@ -62,9 +68,14 @@ const Caracter = () => {
       ))}
 
       <div className="Search">
-        <input type="text" value={search} onChange={handlerSearch} />
+        <input
+          type="text"
+          value={search}
+          ref={searchInput}
+          onChange={handlerSearch}
+        />
       </div>
-      {caracter.map((personaje) => (
+      {filterUsers.map((personaje) => (
         <div className="item" key={personaje.id}>
           <p>{personaje.name}</p>
           <button type="button" onClick={() => handleClick(personaje)}>
