@@ -1,9 +1,20 @@
-import React, { useEffect, useState, useReducer, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useReducer,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
+import Search from "../Search";
+import usePersonage from "../../hooks/useCharacters";
 
 //TODO favoritos
 const initialState = {
   favorites: [],
 };
+
+//TODO API
+const API = "https://rickandmortyapi.com/api/character";
 // console.log(initialState)
 const favoriteReducer = (state, action) => {
   switch (action.type) {
@@ -18,48 +29,53 @@ const favoriteReducer = (state, action) => {
 };
 
 //TODO crear caracteres
-const Caracter = () => {
-  const [caracter, setCaracter] = useState([]);
+const Character = () => {
+  // const [character, setCharacter] = useState([]);
   const [favorites, dispatch] = useReducer(favoriteReducer, initialState);
   const [search, setSearch] = useState("");
   const searchInput = useRef(null);
+  const character = usePersonage(API);
 
   //TODO buscar nombre
-  const handlerSearch = () => {
-    // console.log('input')
-    // console.log(e.target.value);
-    // setSearch(e.target.value);
+  // const handlerSearch = () => {
+  //   // console.log('input')
+  //   // console.log(e.target.value);
+  //   // setSearch(e.target.value);
+  //   setSearch(searchInput.current.value);
+  //   // console.log(searchInput);
+  // };
+  //use callback
+  const handlerSearch = useCallback(() => {
     setSearch(searchInput.current.value);
-    // console.log(searchInput);
-  };
+  }, []);
+
   //TODO a;adir favoritos
   const handleClick = (favorite) => {
     dispatch({ type: "ADD_TO_FAVORITE", payload: favorite });
   };
 
   //TODO filtrar
-
   // const filterUsers = caracter.filter((user) => {
   //     return user.name.toLowerCase().includes(search.toLowerCase())
   //   })
   // console.log(filterUsers)
   const filterUsers = useMemo(
     () =>
-      caracter.filter((user) => {
+      character.filter((user) => {
         return user.name.toLowerCase().includes(search.toLowerCase());
       }),
-    [caracter, search]
+    [search, character]
   );
   //Conectar con API
-  useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.results);
-        setCaracter(data.results);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://rickandmortyapi.com/api/character")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // console.log(data.results);
+  //       setCaracter(data.results);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   return (
     <div className="Characters">
@@ -67,18 +83,15 @@ const Caracter = () => {
         <li key={favorite.id}>{favorite.name}</li>
       ))}
 
-      <div className="Search">
-        <input
-          type="text"
-          value={search}
-          ref={searchInput}
-          onChange={handlerSearch}
-        />
-      </div>
-      {filterUsers.map((personaje) => (
-        <div className="item" key={personaje.id}>
-          <p>{personaje.name}</p>
-          <button type="button" onClick={() => handleClick(personaje)}>
+      <Search
+        search={search}
+        searchInput={searchInput}
+        handlerSearch={handlerSearch}
+      />
+      {filterUsers.map((personage) => (
+        <div className="item" key={personage.id}>
+          <p>{personage.name}</p>
+          <button type="button" onClick={() => handleClick(personage)}>
             {" "}
             Click me
           </button>
@@ -88,4 +101,4 @@ const Caracter = () => {
   );
 };
 
-export default Caracter;
+export default Character;
