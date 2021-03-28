@@ -1,11 +1,9 @@
-
-import './App.css';
+import React from 'react';
+import './styles/components/App.css';
 import Header from "./components/Header";
 import Character from "./components/Character";
 
-
-function App() {
-  return (
+const App = () => (
     <div className="App">
         <p>
           reload.
@@ -15,7 +13,6 @@ function App() {
 
 
     </div>
-  );
-}
+  )
 
 export default App;

@@ -1,25 +1,22 @@
-import React, { useState, useContext} from 'react'
-import ContextThema from "../../Context";
+import React, { useState, useContext } from 'react';
+import ContextThema from '../../Context';
 
 const Header = () => {
-    const [darMode, setDarMode] = useState(false);
-    const color = useContext(ContextThema);
-    const handleClick = () => {
-        setDarMode(!darMode);
-    }
-    
+  const [darMode, setDarMode] = useState(false);
+  const color = useContext(ContextThema);
 
-    return (
-        <div className="header">
-            <h1 style={{color}} >Header</h1>
-            <button type="button" className="button" onClick={handleClick}>
-                {darMode ? 'Darkmode' : 'LightMode'}
-            </button>
-        </div>
-    )
-}
+  const handleClick = () => {
+    setDarMode(!darMode);
+  };
 
-export default Header
+  return (
+    <div className="header">
+      <h1 style={{ color }}>Header</h1>
+      <button type="button" className="button" onClick={handleClick}>
+        {darMode ? 'Darkmode' : 'LightMode'}
+      </button>
+    </div>
+  );
+};
 
-
-
+export default Header;
