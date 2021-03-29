@@ -1,11 +1,14 @@
 import React from 'react'
+import initialState from "../initialState";
+import Products from "./Products";
 
-
-const Home = props => (
+const Home = () => {
+    console.log(initialState);
+    return (
         <div>
-            <h1>Home</h1>
+            <Products props={initialState.products} />
         </div>
-    )
+    )}
 
 
 export default Home
