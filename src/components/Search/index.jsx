@@ -1,7 +1,6 @@
 import React from "react";
 
-const Search = ({search, searchInput, handlerSearch}) => {
-  return (
+const Search = ({search, searchInput, handlerSearch}) => (
     <div>
       <div className="Search">
         <input
@@ -13,6 +12,5 @@ const Search = ({search, searchInput, handlerSearch}) => {
       </div>
     </div>
   );
-};
 
 export default Search;

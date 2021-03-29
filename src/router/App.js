@@ -8,6 +8,7 @@ import Checkout from "../components/Checkout";
 import Information from "../components/Information";
 import NotFound from "../components/NotFound";
 import Payment from "../components/Payment";
+import Layout from "../components/Layout";
 
 export default function App() {
   return (
@@ -30,7 +31,7 @@ export default function App() {
             <Link to="/checkout/success">Success</Link>
           </li>
         </ul>
-
+        <Layout>
         <Switch>
           <Route path="/checkout/success" component={Success} />
           <Route path="/checkout/payment" component={Payment} />
@@ -39,6 +40,7 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route path="*" component={NotFound} />
         </Switch>
+        </Layout>
       </div>
     </Router>
   );
