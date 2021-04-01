@@ -3,13 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./router/App";
 import reportWebVitals from "./reportWebVitals";
-import ContextThema from "./Context";
+// import ContextThema from "./Context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextThema.Provider value="blue">
       <App />
-    </ContextThema.Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
