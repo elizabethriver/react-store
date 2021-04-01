@@ -9,6 +9,7 @@ import Information from "../components/Information";
 import NotFound from "../components/NotFound";
 import Payment from "../components/Payment";
 import Layout from "../components/Layout";
+import '../styles/components/App.css'
 
 export default function App() {
   return (

@@ -1,19 +1,18 @@
 import React from 'react';
+import Product from "./Product";
 
-const Products = ({ props }) => {
-  console.log(props);
-  return (
+const Products = ({ props }) => 
+  // console.log(props);
+   (
     <div>
       <h1>Products</h1>
       <div>
-        {props.map((player) => (
-          <div key={player.id}>
-            <p>{player.title}</p>
-          </div>
+        {props.map((product) => (
+          <Product key={product.id} product={product} />
         ))}
       </div>
     </div>
-  );
-};
+  )
+;
 
 export default Products;
