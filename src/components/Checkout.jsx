@@ -1,25 +1,53 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import AppConttext from '../Context/AppConttext';
 
-const Checkout = () => (
-  <div>
+const Checkout = () => {
+  const {
+    state: { cart },
+    deleteItemProduct,
+  } = useContext(AppConttext);
+  console.log({ cart });
+  const removeItem = (product) => {
+    deleteItemProduct(product);
+  };
+  const handdleSumTotal = () => {
+    // Esto es para transformar un array en su valor total
+    const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
+    const cartSum = cart.reduce(reducer, 0);
+    console.log(cartSum, 'aqui');
+    return cartSum;
+  };
+  return (
     <div>
       <h3>List of petitions</h3>
-      <h1>Item name</h1>
-      <span>$10</span>
+      {cart.length !== 0 ? <h1>List of card</h1> : <h1>Not added products</h1>}
+      {cart.map((item) => (
+        <div className="Main" key={item.id}>
+          <h1>{item.title}</h1>
+          <span>${item.price}</span>
+          <button
+            type="button"
+            onClick={() => {
+              removeItem(item);
+            }}
+          >
+            <DeleteIcon />
+          </button>
+        </div>
+      ))}
+      <div>
+        <h3>{`Price total: $ ${handdleSumTotal()}`}</h3>
+        <Link to="/checkout/information">
+          <button type="button" label="text">
+            <ArrowForwardIcon />
+          </button>
+        </Link>
+      </div>
     </div>
-    <button type="button">
-      <DeleteIcon />
-    </button>
-    <div>
-      <h3>Price total: $10</h3>
-      <Link to="/checkout/information">
-        <button type="button" label="text"><ArrowForwardIcon /></button>
-      </Link>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Checkout;
