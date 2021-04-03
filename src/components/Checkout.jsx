@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import AppConttext from '../Context/AppConttext';
+import handdleSumTotal from "../utils";
 
 const Checkout = () => {
   const {
@@ -13,13 +14,13 @@ const Checkout = () => {
   const removeItem = (product) => {
     deleteItemProduct(product);
   };
-  const handdleSumTotal = () => {
-    // Esto es para transformar un array en su valor total
-    const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
-    const cartSum = cart.reduce(reducer, 0);
-    console.log(cartSum, 'aqui');
-    return cartSum;
-  };
+  // const handdleSumTotal = () => {
+  //   // Esto es para transformar un array en su valor total
+  //   const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
+  //   const cartSum = cart.reduce(reducer, 0);
+  //   console.log(cartSum, 'aqui');
+  //   return cartSum;
+  // };
   return (
     <div>
       <h3>List of petitions</h3>
@@ -39,7 +40,7 @@ const Checkout = () => {
         </div>
       ))}
       <div>
-        <h3>{`Price total: $ ${handdleSumTotal()}`}</h3>
+        <h3>{`Price total: $ ${handdleSumTotal(cart)}`}</h3>
         <Link to="/checkout/information">
           <button type="button" label="text">
             <ArrowForwardIcon />

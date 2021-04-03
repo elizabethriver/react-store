@@ -9,14 +9,14 @@ const Information = () => {
     state: { cart },
     addToBuyer,
   } = useContext(AppConttext);
-  console.log({ cart });
+  // console.log({ cart });
   const form = useRef(null);
-  console.log(form);
+  // console.log(form);
   const history = useHistory();
   const handleSudmit = () => {
     // create a form
     const formData = new FormData(form.current);
-    console.log(formData)
+    // console.log(formData)
     const buyer = {
       'name': formData.get('name'),
       'email': formData.get('email'),
@@ -30,7 +30,7 @@ const Information = () => {
     }
     // send data to another url
     addToBuyer(buyer);
-    history.push('checkout/payment');
+    history.push('./payment');
 
   }
   return (
