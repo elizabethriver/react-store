@@ -1,0 +1,57 @@
+[debug] [2021-04-04T20:55:36.249Z] ----------------------------------------------------------------------
+[debug] [2021-04-04T20:55:36.252Z] Command:       /usr/bin/node /usr/local/bin/firebase init
+[debug] [2021-04-04T20:55:36.252Z] CLI Version:   9.8.0
+[debug] [2021-04-04T20:55:36.253Z] Platform:      linux
+[debug] [2021-04-04T20:55:36.253Z] Node Version:  v10.19.0
+[debug] [2021-04-04T20:55:36.253Z] Time:          Sun Apr 04 2021 15:55:36 GMT-0500 (Peru Standard Time)
+[debug] [2021-04-04T20:55:36.253Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-04T20:55:36.261Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-04T20:55:36.261Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/eliza/Documents/react-store
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using react-store-2be85. 
+[debug] [2021-04-04T20:55:42.035Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/react-store-2be85 [none]
+[debug] [2021-04-04T20:55:43.347Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/react-store-2be85 200
+[debug] [2021-04-04T20:55:43.352Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/react-store-2be85 {"projectId":"react-store-2be85","projectNumber":"376925896753","displayName":"react-store","name":"projects/react-store-2be85","resources":{"hostingSite":"react-store-2be85"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-04-04T20:55:58.456Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2021-04-04T20:55:58.762Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2021-04-04T20:55:58.762Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"8.3.2","browserURL":"https://www.gstatic.com/firebasejs/8.3.2/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/8.3.2/firebase.tgz"},"live":{"version":"8.3","browserURL":"https://www.gstatic.com/firebasejs/live/8.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/8.3/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/8.3.2/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js","auth":"https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js","database":"https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js","firestore":"https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js","functions":"https://www.gstatic.com/firebasejs/8.3.2/firebase-functions.js","installations":"https://www.gstatic.com/firebasejs/8.3.2/firebase-installations.js","messaging":"https://www.gstatic.com/firebasejs/8.3.2/firebase-messaging.js","storage":"https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/8.3.2/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/8.3.2/firebase-remote-config.js","firestore.memory":"https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.memory.js"}}
+[info] i  Skipping write of y/index.html 
+[info] 
+[info] i  Writing configuration info to firebase.json... 
+[debug] [2021-04-04T20:56:34.118Z] Error: EACCES: permission denied, open '/home/eliza/Documents/react-store/firebase.json'
+    at Object.openSync (fs.js:443:3)
+    at Object.writeFileSync (fs.js:1194:35)
+    at Config.writeProjectFile (/usr/local/lib/node_modules/firebase-tools/lib/config.js:156:8)
+    at /usr/local/lib/node_modules/firebase-tools/lib/commands/init.js:137:16
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: An unexpected error has occurred.
