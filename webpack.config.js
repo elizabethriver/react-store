@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin'); // installed via npm
 const webpack = require('webpack'); // to access built-in plugins
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -47,6 +48,7 @@ module.exports = {
   },
   plugins: [
     // new webpack.ProgressPlugin(),
+    new Dotenv(),
     new webpack.ProvidePlugin({
       React: 'react',
     }),
