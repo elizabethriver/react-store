@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // import PaymentIcon from '@material-ui/icons/Payment';
 import { PayPalButton } from 'react-paypal-button';
 import AppConttext from '../Context/AppConttext';
-import handdleSumTotal from "../utils";
+import handdleSumTotal from '../utils';
+import HelmetComponent from './Helmet';
 
 const Payment = () => {
   const {
@@ -43,6 +44,11 @@ const Payment = () => {
   };
   return (
     <div>
+      <HelmetComponent
+        title="React-Store"
+        description="payment"
+        descriptionContent="Payment information"
+      />
       <h1>Resume of cart</h1>
       {cart.map((item) => (
         <div>

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import AppConttext from '../Context/AppConttext';
-import handdleSumTotal from "../utils";
+import handdleSumTotal from '../utils';
+import HelmetComponent from './Helmet';
 
 const Checkout = () => {
   const {
@@ -23,6 +24,11 @@ const Checkout = () => {
   // };
   return (
     <div>
+      <HelmetComponent
+        title="React-Store"
+        description="checkout"
+        descriptionContent="Checkout Products"
+      />
       <h3>List of petitions</h3>
       {cart.length !== 0 ? <h1>List of card</h1> : <h1>Not added products</h1>}
       {cart.map((item) => (
