@@ -28,6 +28,7 @@ const Information = () => {
       'code': formData.get('code'),
       'phone': formData.get('phone'),
     }
+    console.log(buyer);
     // send data to another url
     addToBuyer(buyer);
     history.push('./payment');
